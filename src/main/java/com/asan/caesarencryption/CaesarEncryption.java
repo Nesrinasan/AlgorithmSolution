@@ -16,12 +16,12 @@ public class CaesarEncryption {
         String sifrelenecekKelime = kullaniciGirisi.next();
         System.out.println("Şifreyi yapacak değeri giriniz");
         int sifreleyecekDeger = kullaniciGirisi.nextInt();
-        String sifreliKelime = sifrele(null, sifreleyecekDeger);
+        String sifreliKelime = sifrele(sifrelenecekKelime, sifreleyecekDeger);
         System.out.println(sifreliKelime);
 
     }
 
-    private static String sifrele(String s, int k) {
+    private static String sifrele(String sifrelenecekKelime, int sifreleyecekDeger) {
         Map<Character, Integer> alfabeIndisDegerMap = new HashMap<>();
         alfabeIndisDegerMap.put('a', 0);
         alfabeIndisDegerMap.put('b', 1);
@@ -54,10 +54,10 @@ public class CaesarEncryption {
         alfabeIndisDegerMap.put('z', 28);
 
         String sifreliKelime = "";
-        char[] sifrelenecekKelimeninHarfleri = s.toCharArray();
+        char[] sifrelenecekKelimeninHarfleri = sifrelenecekKelime.toCharArray();
         for (char sifrelenecekKelimeninHarfi : sifrelenecekKelimeninHarfleri) {
             Integer yeniKey = alfabeIndisDegerMap.get(sifrelenecekKelimeninHarfi);
-            yeniKey = yeniKey + k;
+            yeniKey = yeniKey + sifreleyecekDeger;
             Set<Character> characters = alfabeIndisDegerMap.keySet();
             for (Character character : characters) {
                 Integer key = alfabeIndisDegerMap.get(character);
