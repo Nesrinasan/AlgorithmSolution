@@ -7,6 +7,9 @@ import java.util.Set;
 
 /**
  * Created by Nesrin Aşan on 1/3/2020.
+ * Sezar algoritmasına göre bir şifrelenecek bir text ve bir sayı verilir.
+ * şifreleenecek textin her bir harfi verilen sayı kadar alfabede ilerletilir ve şifre oluşturulur.
+ * Örnek : şifrelenecek text :Nesrin sayı: 2 şifreli text : ögtşkö
  */
 public class CaesarEncryption {
 
@@ -16,12 +19,12 @@ public class CaesarEncryption {
         String sifrelenecekKelime = kullaniciGirisi.next();
         System.out.println("Şifreyi yapacak değeri giriniz");
         int sifreleyecekDeger = kullaniciGirisi.nextInt();
-        String sifreliKelime = sifrele(sifrelenecekKelime, sifreleyecekDeger);
+        StringBuilder sifreliKelime = sifrele(sifrelenecekKelime, sifreleyecekDeger);
         System.out.println(sifreliKelime);
 
     }
 
-    private static String sifrele(String sifrelenecekKelime, int sifreleyecekDeger) {
+    private static StringBuilder sifrele(String sifrelenecekKelime, int sifreleyecekDeger) {
         Map<Character, Integer> alfabeIndisDegerMap = new HashMap<>();
         alfabeIndisDegerMap.put('a', 0);
         alfabeIndisDegerMap.put('b', 1);
@@ -53,7 +56,7 @@ public class CaesarEncryption {
         alfabeIndisDegerMap.put('y', 27);
         alfabeIndisDegerMap.put('z', 28);
 
-        String sifreliKelime = "";
+        StringBuilder sifreliKelime = new StringBuilder();
         char[] sifrelenecekKelimeninHarfleri = sifrelenecekKelime.toCharArray();
         for (char sifrelenecekKelimeninHarfi : sifrelenecekKelimeninHarfleri) {
             Integer yeniKey = alfabeIndisDegerMap.get(sifrelenecekKelimeninHarfi);
@@ -62,7 +65,7 @@ public class CaesarEncryption {
             for (Character character : characters) {
                 Integer key = alfabeIndisDegerMap.get(character);
                 if (yeniKey.equals(key)) {
-                    sifreliKelime = sifreliKelime + character;
+                    sifreliKelime.append(character);
                 }
             }
         }
