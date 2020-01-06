@@ -4,6 +4,10 @@ import java.util.*;
 
 /**
  * Created by Nesrin Aşan on 1/3/2020.
+ *
+ * Karışık olarak bulunan çorapları inceleyerek eşleştirip, kaç adet çorap çifti olduğunu bulan algoritma.
+ *
+ * Çoraplar [15, 12, 2, 12, 5, 15, 2] Burada 3 çift çorap vardır.
  */
 public class SockMerchant {
     static List<Integer> corapList = new ArrayList();
